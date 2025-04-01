@@ -32,8 +32,10 @@ We also need to install (via conda/mamba or pip) the `snakemake-executor-plugin-
 We can then run
 
 ```
-snakemake **--executor slurm --profile "slurm/v8"** -n
+snakemake --profile "slurm/v8" -n
 ```
+
+Note, the profile has recently been updated to include the `--executor slurm` directive within the profile, so we no longer need to set it manually on the command line.
 
 The main differences are the logging will be put in a hidden folder `.snakemake/slurm_logs/rule_{wildcards}/<SLURM_JOB_ID>.log`.
 Currently this is for both stderr and stdout.
@@ -54,7 +56,7 @@ There is also something strange about how the "jobstep" works with SLURM through
 ### Version 7
 
 ```
-snakemake **--profile "slurm/full"** -n
+snakemake --profile "slurm/full" -n
 ```
 
 The logging should be put in a folder called `logs/<rule>/{wildcards}-{time}.out/err` with the stdout and stdrr logged separately.
