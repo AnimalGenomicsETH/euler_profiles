@@ -1,7 +1,7 @@
 ## --- Generic snakemake args for Euler ---
 
 # Bind in typical directories we have files in
-apptainer-args: "-B $TMPDIR -B /cluster/work/pausch -B /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data"
+apptainer-args: "-B $TMPDIR -B /cluster/work/pausch -B /cluster/work/pausch_bpc -B /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data"
 
 # Use conda by default, apptainer has to be set explicitly
 # NOTE: this is currently bugged if you want both, use "--sdm conda apptainer" on the command line if you need both.
@@ -15,17 +15,18 @@ max-jobs-per-timespan: "100/1m" # set to 100 jobs per minute
 max-status-checks-per-second: "10"
 latency-wait: "60"
 
+slurm-logdir: "slurm_logs"
 slurm-keep-successful-logs: True
 slurm-delete-logfiles-older-than: 0
 slurm-init-seconds-before-status-checks: 60
 
 keep-going: True
-jobs: 1500
+jobs: 1000
 cores: 2500
 local-cores: 4
 
 printshellcmds: False
-quiet: "rules"
+#quiet: "rules"
 keep-going: True
 rerun-trigger: "mtime"
 notemp: True # Ignore temp() directives, i.e. do NOT delete temporary files
@@ -35,9 +36,7 @@ default-resources:
   - mem_mb_per_cpu=1024
   #these below are set to make the executor not request them based on file size
   - mem_mb=0
-  - mem_mib=0
   - disk_mb=0
-  - disk_mib=0
   - runtime="4h"
   - slurm_account="ls_pausch"
   - slurm_partition='normal.4h'
