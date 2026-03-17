@@ -1,6 +1,6 @@
 # Running `snakemake` on Euler
 
-## Installation
+## Installation
 
 ### Installing snakemake
 

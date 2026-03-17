@@ -41,4 +41,3 @@ default-resources:
   - disk_mb=0
   - runtime="4h"
   - slurm_account="ls_pausch"
-  - slurm_partition='normal.4h'
