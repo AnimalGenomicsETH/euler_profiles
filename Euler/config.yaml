@@ -3,9 +3,11 @@
 # Bind in typical directories we have files in
 apptainer-args: "-B $TMPDIR -B /cluster/work/pausch -B /cluster/work/pausch_bpc -B /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data"
 
-# Use conda by default, apptainer has to be set explicitly
 # NOTE: this is currently bugged if you want both, use "--sdm conda apptainer" on the command line if you need both.
-software-deployment-method: "conda" #'apptainer', 'env-modules'
+software-deployment-method: 'apptainer' # 'conda', 'env-modules'
+
+persistence-backend: db
+trust-io-cache: True
 
 ## --- Specific slurm snakemake args for Euler ---
 executor: "slurm"
@@ -29,7 +31,7 @@ printshellcmds: False
 #quiet: "rules"
 keep-going: True
 rerun-trigger: "mtime"
-notemp: True # Ignore temp() directives, i.e. do NOT delete temporary files
+notemp: False
 
 default-resources:
   - threads=1
