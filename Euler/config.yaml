@@ -1,7 +1,7 @@
 ## --- Generic snakemake args for Euler ---
 
 # Bind in typical directories we have files in
-apptainer-args: "-B $TMPDIR -B /cluster/work/pausch -B /cluster/work/pausch_bpc -B /nfs/nas12.ethz.ch/fs1201/green_groups_tg_public/data"
+apptainer-args: "-B $TMPDIR -B /cluster/work/pausch -B /cluster/work/pausch_bpc -B /nfs/hest.nas.ethz.ch/fs1201/green_groups_tg_public/data"
 
 # NOTE: this is currently bugged if you want both, use "--sdm conda apptainer" on the command line if you need both.
 software-deployment-method: 'apptainer' # 'conda', 'env-modules'
